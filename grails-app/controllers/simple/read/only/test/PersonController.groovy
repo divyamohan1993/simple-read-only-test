@@ -5,8 +5,9 @@ package simple.read.only.test
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 class PersonController {
+
+    def personService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -90,6 +91,14 @@ class PersonController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+
+    @Transactional(readOnly = true)
+    def myTest() {
+        def person = Person.get(params.id)
+        person.properties = params
+        personService.doSomething(person)
+        render person.name
     }
 
     protected void notFound() {

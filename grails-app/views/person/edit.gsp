@@ -29,6 +29,7 @@
 			</g:hasErrors>
 			<g:form url="[resource:personInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${personInstance?.version}" />
+				<g:hiddenField name="id" value="${personInstance?.id}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
@@ -39,3 +40,17 @@
 		</div>
 	</body>
 </html>
+
+<g:javascript>
+$(function() {
+    $("input").change(function() {
+        $.ajax({
+            url: '/simple-read-only-test/person/myTest',
+            data: $("form").serialize(),
+            success: function(data) {
+                alert(data);
+            }
+        });
+    });
+});
+</g:javascript>

@@ -1,9 +1,8 @@
 package simple.read.only.test
 
-class Person {
+class Book {
 
-    String name
-    Integer age
+    String title
 
     static constraints = {
     }

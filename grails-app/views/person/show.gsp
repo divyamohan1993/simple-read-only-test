@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list person">
 			
+				<g:if test="${personInstance?.age}">
+				<li class="fieldcontain">
+					<span id="age-label" class="property-label"><g:message code="person.age.label" default="Age" /></span>
+					
+						<span class="property-value" aria-labelledby="age-label"><g:fieldValue bean="${personInstance}" field="age"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${personInstance?.name}">
 				<li class="fieldcontain">
 					<span id="name-label" class="property-label"><g:message code="person.name.label" default="Name" /></span>
